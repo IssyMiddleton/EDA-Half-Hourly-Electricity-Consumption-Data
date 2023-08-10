@@ -2,7 +2,7 @@
 
 This file uses ProjectTemplate and produces an Energy Report in pdf format using RMarkdown. An example is saved in the Reports folder.
 
-The consumption data provided in the folder called data is real data, provided by a volunteer. The profile is believed to be reflective of a domestic property without Low Carbon Technologies.
+The consumption data provided in the folder called consumption is real data, provided by a volunteer with full consent to share in the interests of innovation and learning. The profile is believed to be reflective of a domestic property without Low Carbon Technologies.
 
 ProjectTemplate is an R package that helps users organize statistical analysis projects. 
 
