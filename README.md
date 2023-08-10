@@ -4,7 +4,7 @@ This R code uses ProjectTemplate and produces an Energy Report in .pdf format us
 
 The .csv file provided in the data folder called consumption contains actual, half-hourly electricty consumption readings, provided by a volunteer with full consent to share in the interests of innovation and learning. The profile is believed to be reflective of a domestic property without Low Carbon Technologies.
 
-ProjectTemplate is an R package that helps users organize statistical analysis projects. Download the code from GitHub and open in RStudio (green button Code, Download Zip from the main branch).To load your new project, you'll first need to `setwd()` into the directory where this README file is located, once you've extracted from the zip file. Then you need to run the following two lines of R code:
+ProjectTemplate is an R package that helps users organize statistical analysis projects. Download the code for this repository from GitHub and open in RStudio (green button Code, Download Zip from the main branch).To load your new project, you'll first need to `setwd()` into the directory where this README file is located, once you've extracted from the zip file. Then you need to run the following two lines of R code:
 
 	library('ProjectTemplate')
 	load.project()
