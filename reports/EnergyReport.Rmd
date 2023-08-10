@@ -1,0 +1,138 @@
+---
+title: "`r params$title`"
+author: "`r params$org`"
+date: "`r params$date`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  word_document: default
+  html_document:
+    df_print: paged
+geometry: a4paper, margin=2.5cm
+mainfont: Calibri
+fontsize: 10pt
+params:
+  title: Smart Metering Data - Energy Report
+  author: Issy Middleton
+---
+```{r setup, include=FALSE}
+# Knitr setup
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+```{r include=FALSE}
+# Load project
+library("ProjectTemplate")
+load.project()
+# Run code in analysis.R script)
+source("src/eda-Consumption.R")
+```
+This report provides the findings of exploratory analysis undertaken using half-hourly consumption data from `r format(min(consumption$date), format = "%d %B %Y")` to `r format(max(consumption$date), format = "%d %B %Y")`, `r days` days. 
+
+Electricity demand varies significantly when measured each half hour. The pattern below shows peaks and troughs for daily and weekly patterns of usage. The lowest half hourly reading recorded during the period was `r (min(consumption$kWh))` kWh. The average half hourly reading recorded during the period was `r round(mean(consumption$kWh),digits = 2)` kWh. Total consumption during this time period was `r format(round(sum(consumption$kWh), digits = 0))` kWh, equating to a daily average of `r format(round(sum(consumption$kWh)/days), digits = 1)` kWh. 
+
+### Half Hourly Demand Profile
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+HHLine
+```
+\newpage
+
+### Daily Electricity Usage 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+DailyLine
+```
+
+### Average Half-Hourly Demand Profile by Typical Day 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+DailyProfile
+```
+
+### Heatmap
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+heatmap
+```
+
+### Density Plot showing seasonal variation
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+Density
+```
+
+
+### Hourly Demand Profile by Week - 2022 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+Hourbyweek2022
+```
+
+### Weekly Electricity Consumption by Time of Day - 2022
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+WeekYearToD2022
+```
+
+### Time of Day Electricity Usage (4 hour periods combined) - 2022
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+HHLine4Hours2022
+```
+
+### Hourly Demand Profile by Week - 2023
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+Hourbyweek2023
+```
+
+### Weekly Electricity Consumption by Time of Day - 2023
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+WeekYearToD2023
+```
+
+### Time of Day Electricity Usage (4 hour periods combined) - 2023
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+HHLine4Hours2023
+```
+
+\newpage
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+kable(Peak, align = "lcccc", booktabs = TRUE, caption = "Peak Four-Hourly Periods") %>%
+  row_spec(0, bold = TRUE)%>%
+  kable_styling(latex_options = "striped")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+kable(Stats_b, align = "lcccc", booktabs = TRUE, caption = "Peak Half-Hourly Periods") %>%
+  row_spec(0, bold = TRUE) %>%
+  kable_styling(latex_options = "striped")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+kbl(Cons_Year2022, booktabs = TRUE, caption = "Weekly Consumption - 2022") %>%
+kable_styling(font_size = 8,latex_options = "striped")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Insert consumption graphs plots
+kbl(Cons_Year2023, booktabs = TRUE, caption = "Weekly Consumption - 2023") %>%
+kable_styling(font_size = 8,latex_options = "striped")
+```
